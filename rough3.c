@@ -17,11 +17,14 @@ void add() {
     num_sum = (num1 * den2) + (num2 * den1);
     den_sum = (den1 * den2);
 
-    if (num_sum > den_sum)
+    if (num_sum > den_sum) {
         smallest = den_sum;
-    else
+    }
+      
+    else {
         smallest = num_sum;
-
+    }
+  
     for (int i = smallest; i > 1; i--) {
 
         if ((num_sum % i == 0) && (den_sum % i == 0)) {
