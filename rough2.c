@@ -1,18 +1,15 @@
 #include <stdio.h>
 
-int num1, den1, num2, den2, num_sum, den_sum, smallest;
 
-void input(){
+int main(void) {
 
+    int num1, den1, num2, den2, num_sum, den_sum, smallest;
+    
     printf("Please enter the first fraction : ");
     scanf("%d/%d", &num1, &den1);
 
     printf("Please enter the second fraction : ");
     scanf("%d/%d", &num2, &den2);
-
-}
-
-void add() {
 
     num_sum = (num1 * den2) + (num2 * den1);
     den_sum = (den1 * den2);
@@ -33,19 +30,6 @@ void add() {
 
     }
 
-}
-
-void output() {
-
-    printf("\nThe sum is %d/%d\n", num_sum, den_sum);
-
-}
-
-int main(void) {
-
-    
-    input();
-    add();
-    output();
+    printf("\nthe sum is %d/%d\n", num_sum, den_sum);
 
 }

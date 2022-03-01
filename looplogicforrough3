@@ -1,0 +1,6 @@
+  for(int i = 1 ; i<=*totalnum && i<=*totalden ; i++)
+    {
+      if(*totalnum%i==0 && *totalden%i==0)
+        gcd = i;
+    }
+  printf("The fraction is %d/%d\n", *totalnum/gcd, *totalden/gcd);
