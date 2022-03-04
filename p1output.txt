@@ -10,18 +10,18 @@ Breakpoint 1, main () at p1original.c:45
 (gdb) n
 47    input(&num1,&den1,&num2,&den2);
 (gdb) s
-input (num1=0x7ffd79f8b470, den1=0x7ffd79f8b474, num2=0x7ffd79f8b478, 
-    den2=0x7ffd79f8b47c) at p1original.c:5
+input (num1=0x7ffdbadd0c40, den1=0x7ffdbadd0c44, num2=0x7ffdbadd0c48, 
+    den2=0x7ffdbadd0c4c) at p1original.c:5
 5     printf("enter first numerator: ");
 (gdb) n
 6     scanf("%d",num1);
 (gdb) n
-enter first numerator: 2
+enter first numerator: 3
 7     printf("enter the first denominator: ");
 (gdb) n
 8     scanf("%d",den1);
 (gdb) n
-enter the first denominator: 4
+enter the first denominator: 2
 9     printf("enter the second numerator: ");
 (gdb) n
 10    scanf("%d",num2);
@@ -31,31 +31,56 @@ enter the second numerator: 1
 (gdb) n
 12    scanf("%d",den2);
 (gdb) n
-enter the second denominator: 4
+enter the second denominator: 2
 13  }
 (gdb) n
 main () at p1original.c:48
 48    add(num1,den1,num2,den2,&num_sum,&den_sum);
 (gdb) p num1
-$1 = 2
+$1 = 3
 (gdb) p num2
 $2 = 1
 (gdb) p den1
-$3 = 4
+$3 = 2
 (gdb) p den2
-$4 = 4
-(gdb) n
-49    output(num1,den1,num2,den2,num_sum,den_sum);
+$4 = 2
 (gdb) s
-output (num1=2, den1=4, num2=1, den2=4, num_sum=3, den_sum=4)
-    at p1original.c:42
-42    printf("the sum of %d/%d + %d/%d = %d/%d",num1,den1,num2,den2,num_sum,den_sum);
+add (num1=3, den1=2, num2=1, den2=2, num_sum=0x7ffdbadd0c50, 
+    den_sum=0x7ffdbadd0c54) at p1original.c:18
+18      *num_sum = (num1 * den2) + (num2 * den1);
 (gdb) n
-43  }
+19      *den_sum = (den1 * den2);
 (gdb) n
-main () at p1original.c:50
+21      if (*num_sum > *den_sum) {
+(gdb) n
+22          smallest = *den_sum;
+(gdb) n
+29      for (int i = smallest; i > 1; i--) {
+(gdb) n
+31          if ((*num_sum % i == 0) && (*den_sum % i == 0)) {
+(gdb) n
+33              *num_sum = *num_sum / i;
+(gdb) n
+34              *den_sum = *den_sum / i;
+(gdb) n
+29      for (int i = smallest; i > 1; i--) {
+(gdb) n
+31          if ((*num_sum % i == 0) && (*den_sum % i == 0)) {
+(gdb) n
+29      for (int i = smallest; i > 1; i--) {
+(gdb) n
+31          if ((*num_sum % i == 0) && (*den_sum % i == 0)) {
+(gdb) n
+29      for (int i = smallest; i > 1; i--) {
+(gdb) n
+39  }
+(gdb) n
+main () at p1original.c:49
+49    output(num1,den1,num2,den2,num_sum,den_sum);
+(gdb) n
 50    return 0;
-(gdb) c
+(gdb) s
+51  }(gdb) c
 Continuing.
-the sum of 2/4 + 1/4 = 3/4[Inferior 1 (process 219) exited normally]
+the sum of 3/2 + 1/2 = 2/1[Inferior 1 (process 330) exited normally]
 (gdb) 
