@@ -1,1 +1,94 @@
+GNU bash, version 4.4.20(1)-release (x86_64-pc-linux-gnu)
+b main
+Breakpoint 1 at 0x858: file p2original.c, line 43.
+(gdb) r
+Starting program: /home/runner/Test3Session1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p2original.c:43
+43    f1 = input_fraction();
+(gdb) s
+input_fraction () at p2original.c:11
+11  {
+(gdb) n
+13    printf("Enter the fraction: ");
+(gdb) n
+14    scanf("%d%d", &f.num, &f.den);
+(gdb) n
+Enter the fraction: 1 2
+15    return f;
+(gdb) n
+16  }
+(gdb) p f1
+No symbol "f1" in current context.
+(gdb) p f
+$1 = {num = 1, den = 2}
+(gdb) n
+main () at p2original.c:44
+44    f2 = input_fraction();
+(gdb) s
+input_fraction () at p2original.c:11
+11  {
+(gdb) n
+13    printf("Enter the fraction: ");
+(gdb) n
+14    scanf("%d%d", &f.num, &f.den);
+(gdb) n
+Enter the fraction: 3 2
+15    return f;
+(gdb) n
+16  }
+(gdb) p f
+$2 = {num = 3, den = 2}
+(gdb) n
+main () at p2original.c:45
+45    f3 = input_fraction();
+(gdb) s
+input_fraction () at p2original.c:11
+11  {
+(gdb) n
+13    printf("Enter the fraction: ");
+(gdb) n
+14    scanf("%d%d", &f.num, &f.den);
+(gdb) n
+Enter the fraction: 2 3
+15    return f;
+(gdb) n
+16  }
+(gdb) p f
+$3 = {num = 2, den = 3}
+(gdb) n
+main () at p2original.c:46
+46    smallest = find_smallest(f1,f2,f3);
+(gdb) s
+find_smallest (f1=..., f2=..., f3=...) at p2original.c:20
+20    int common_den = f1.den * f2.den * f3.den;
+(gdb) n
+21    int num1 = f1.num * common_den / f1.den;
+(gdb) n
+22    int num2 = f2.num * common_den / f2.den;
+(gdb) n
+23    int num3 = f3.num * common_den / f3.den;
+(gdb) n
+25    if (num1 < num2 && num1 < num3)
+(gdb) n
+26      return f1;
+(gdb) n
+33  }
+(gdb) p f1
+$4 = {num = 1, den = 2}
+(gdb) n
+main () at p2original.c:47
+47    output(f1,f2,f3,smallest);
+(gdb) s
+output (f1=..., f2=..., f3=..., smallest=...) at p2original.c:37
+37    printf("The smallest of %d/%d, %d/%d, %d/%d is %d/%d", f1. num, f1.den, f2.num, f2.den, f3.num, f3.den, smallest.num, smallest.den);
+(gdb) n
+38  }
+(gdb) n
+main () at p2original.c:48
+48    return 0;
+(gdb) c
+Continuing.
+The smallest of 1/2, 3/2, 2/3 is 1/2[Inferior 1 (process 2151) exited normally]
+(gdb) 
