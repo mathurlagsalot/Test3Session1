@@ -1,1 +1,61 @@
+GNU bash, version 4.4.20(1)-release (x86_64-pc-linux-gnu)
+b main
+Breakpoint 1 at 0x8f1: file p1original.c, line 45.
+(gdb) r
+Starting program: /home/runner/Test3Session1/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p1original.c:45
+45  int main(){
+(gdb) n
+47    input(&num1,&den1,&num2,&den2);
+(gdb) s
+input (num1=0x7ffd79f8b470, den1=0x7ffd79f8b474, num2=0x7ffd79f8b478, 
+    den2=0x7ffd79f8b47c) at p1original.c:5
+5     printf("enter first numerator: ");
+(gdb) n
+6     scanf("%d",num1);
+(gdb) n
+enter first numerator: 2
+7     printf("enter the first denominator: ");
+(gdb) n
+8     scanf("%d",den1);
+(gdb) n
+enter the first denominator: 4
+9     printf("enter the second numerator: ");
+(gdb) n
+10    scanf("%d",num2);
+(gdb) n
+enter the second numerator: 1
+11    printf("enter the second denominator: ");
+(gdb) n
+12    scanf("%d",den2);
+(gdb) n
+enter the second denominator: 4
+13  }
+(gdb) n
+main () at p1original.c:48
+48    add(num1,den1,num2,den2,&num_sum,&den_sum);
+(gdb) p num1
+$1 = 2
+(gdb) p num2
+$2 = 1
+(gdb) p den1
+$3 = 4
+(gdb) p den2
+$4 = 4
+(gdb) n
+49    output(num1,den1,num2,den2,num_sum,den_sum);
+(gdb) s
+output (num1=2, den1=4, num2=1, den2=4, num_sum=3, den_sum=4)
+    at p1original.c:42
+42    printf("the sum of %d/%d + %d/%d = %d/%d",num1,den1,num2,den2,num_sum,den_sum);
+(gdb) n
+43  }
+(gdb) n
+main () at p1original.c:50
+50    return 0;
+(gdb) c
+Continuing.
+the sum of 2/4 + 1/4 = 3/4[Inferior 1 (process 219) exited normally]
+(gdb) 
